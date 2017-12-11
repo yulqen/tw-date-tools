@@ -1,3 +1,28 @@
+"""
+Over-engineered way to handle holiday and general date data in taskwarrior.
+
+Currently, tw contains holiday data files in the installation at /usr/share/taskwarrior,
+in the same location as colour files.
+
+The data is relatively limited - 8 dates for the GB calendar. Whilst this is fine, we
+might wish to be able to do things with these dates. Some ideas:
+
+    - quickly chose a calendar to use, without having to find the correct file and
+    amend your .taskrc file
+    - print a list of holidays current in your calendar
+    - warn you if you set a deadline for a holiday date
+    - get a richer set of holiday data from the internet and install it in taskwarrior
+
+More general date data requirements:
+
+    - analyse which are your most popular days for completing a task, and which are
+    least popular
+    - provide basic data about tasks added by week, month, year, etc
+    - output your deadlines to Google Calendar
+    - automatically schedule due dates based on some criteria, possibly data from
+    Google Calendar
+
+"""
 from unittest.mock import patch, MagicMock
 
 from ..http import APIResource, parse
