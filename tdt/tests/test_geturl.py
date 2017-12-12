@@ -39,7 +39,7 @@ data = """{"locale":"en-GB","region":"","date":"2017-01-01","description":"New Y
 
 
 # don't need the decorator here but leaving it for educational purposes for the moment
-@patch('tw_holidays.http.APIResource')
+@patch('tdt.http.APIResource')
 def test_get_data(mock_class):
     ar = APIResource('https://holidata.net/en-GB/2017.json')
     ar._fetch = MagicMock(return_value=data)
