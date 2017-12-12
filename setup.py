@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-import tw_holidays
+import tdt
 from codecs import open
 from os import path
 
@@ -9,9 +9,9 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='tw-holidays',
-    version=tw_holidays.__version__,
-    description='Get national holiday and convert it intwo taskwarrior rc format.',
+    name='tw-date-tools',
+    version=tdt.__version__,
+    description='Process date and holiday data in taskwarrior.',
     long_description=long_description,
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -31,8 +31,8 @@ setup(
     packages=find_packages(),
     python_requires='>=3.6',
     entry_points={'console_scripts': [
-        'tw-holidays = tw_holidays.main:main'
+        'tdt = tdt.main:main'
     ]},
     install_requires=['requests'],
-    test_suite='tw_holidays.tests'
+    test_suite='tdt.tests'
 )
