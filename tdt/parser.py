@@ -11,7 +11,7 @@ class RCParser:
         self.rc_file = f
         self.language = ""
         self.country = ""
-        self.index = None
+        self.index = 0
         self.date = None
         self.holidays: dict = {}
         self._parse()
@@ -20,11 +20,15 @@ class RCParser:
 
         main_data_matched = False
 
+# TODO - needs a way to amend keys because second time round, the keys
+# as we have them are being overwritten obviously
+
         with open(self.rc_file, 'r') as f:
             lines = f.readlines()
             for x in lines:
                 n_match = re.match(RCParser.name_line, x.strip())
                 if n_match:
+                    import pdb; pdb.set_trace()  # XXX BREAKPOINT
                     if not main_data_matched:
                         self.language = n_match.group(1)
                         self.country = n_match.group(2)
