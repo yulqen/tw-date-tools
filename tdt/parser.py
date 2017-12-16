@@ -11,8 +11,6 @@ class RCParser:
         self.rc_file = f
         self.language = ""
         self.country = ""
-        self.index = 0
-        self.date = None
         self.holidays: dict = {}
         self._parse()
 
@@ -28,7 +26,6 @@ class RCParser:
                     if not main_data_matched:
                         self.language = n_match.group(1)
                         self.country = n_match.group(2)
-                        self.index = int(n_match.group(3))
                         hol = n_match.group(4)
                         main_data_matched = True
                         continue

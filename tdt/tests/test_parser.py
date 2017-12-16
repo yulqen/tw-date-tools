@@ -21,6 +21,8 @@ def test_rc_holiday_dict(holiday_rc_file):
     assert "Good Friday_2015" in rc.holidays.keys()
     assert "Good Friday_2016" in rc.holidays.keys()
 
-#def test_contains_date_line(holiday_rc_file):
-#    rc_parser = rc_parser(holiday_rc_file)
-#    assert rc_parser.language == 'en'
+
+def test_other_file_metadata(holiday_rc_file):
+    rc = RCParser(holiday_rc_file)
+    assert rc.language == "en"
+    assert rc.country == "GB"
