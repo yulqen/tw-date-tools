@@ -19,6 +19,7 @@ ptpython = "*"
 pytest = "*"
 mypy = "*"
 httpie = "*"
+ptipython = "*"
 
 
 [requires]
