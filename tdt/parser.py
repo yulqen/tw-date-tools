@@ -20,9 +20,6 @@ class RCParser:
 
         main_data_matched = False
 
-# TODO - needs a way to amend keys because second time round, the keys
-# as we have them are being overwritten obviously
-
         with open(self.rc_file, 'r') as f:
             lines = f.readlines()
             for x in lines:
@@ -32,12 +29,10 @@ class RCParser:
                         self.language = n_match.group(1)
                         self.country = n_match.group(2)
                         self.index = int(n_match.group(3))
-#                       self.holidays[n_match.group(4)] = None
                         hol = n_match.group(4)
                         main_data_matched = True
                         continue
                     else:
-#                       self.holidays[n_match.group(4)] = None
                         hol = n_match.group(4)
                         continue
                 d_match = re.match(RCParser.date_line, x.strip())
