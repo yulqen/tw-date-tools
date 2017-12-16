@@ -28,17 +28,16 @@ class RCParser:
             for x in lines:
                 n_match = re.match(RCParser.name_line, x.strip())
                 if n_match:
-                    import pdb; pdb.set_trace()  # XXX BREAKPOINT
                     if not main_data_matched:
                         self.language = n_match.group(1)
                         self.country = n_match.group(2)
                         self.index = int(n_match.group(3))
-                        self.holidays[n_match.group(4)] = None
+#                       self.holidays[n_match.group(4)] = None
                         hol = n_match.group(4)
                         main_data_matched = True
                         continue
                     else:
-                        self.holidays[n_match.group(4)] = None
+#                       self.holidays[n_match.group(4)] = None
                         hol = n_match.group(4)
                         continue
                 d_match = re.match(RCParser.date_line, x.strip())
@@ -47,7 +46,7 @@ class RCParser:
                         _month = d_match.group(4)[5]
                     else:
                         _month = d_match.group(4)[4:6]
-                    self.holidays[hol] = datetime.date(
+                    self.holidays["_".join([hol, d_match.group(4)[0:4]])] = datetime.date(
                         int(d_match.group(4)[0:4]),
                         int(_month),
                         int(d_match.group(4)[6:8])
