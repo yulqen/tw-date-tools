@@ -44,4 +44,3 @@ def test_get_data(mock_class):
     ar = APIResource('https://holidata.net/en-GB/2017.json')
     ar._fetch = MagicMock(return_value=data)
     assert ar.get_string_io().readline().rstrip() == """{"locale":"en-GB","region":"","date":"2017-01-01","description":"New Year's Day","type":"NF","notes":""}"""
-

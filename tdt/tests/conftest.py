@@ -1,11 +1,6 @@
-# holiday convertor for taskwarrior
-#
+import pytest
 
-import json
-
-meta_data = """
-
-###############################################################################
+test_file = """###############################################################################
 # International Holiday Data provided by Holidata.net
 # http://holidata.net/en-GB/2015.json
 # http://holidata.net/en-GB/2016.json
@@ -33,21 +28,44 @@ meta_data = """
 # http://www.opensource.org/licenses/mit-license.php
 #
 ###############################################################################
+
+holiday.en-GB1.name=New Year's Day
+holiday.en-GB1.date=20150101
+holiday.en-GB2.name=Good Friday
+holiday.en-GB2.date=20150403
+holiday.en-GB3.name=Easter Monday
+holiday.en-GB3.date=20150406
+holiday.en-GB4.name=Early May Bank Holiday
+holiday.en-GB4.date=20150504
+holiday.en-GB5.name=Spring Bank Holiday
+holiday.en-GB5.date=20150525
+holiday.en-GB6.name=August Bank Holiday
+holiday.en-GB6.date=20150831
+holiday.en-GB7.name=Christmas Day
+holiday.en-GB7.date=20151225
+holiday.en-GB8.name=Boxing Day
+holiday.en-GB8.date=20151226
+holiday.en-GB9.name=New Year's Day
+holiday.en-GB9.date=20160101
+holiday.en-GB10.name=Good Friday
+holiday.en-GB10.date=20160325
+holiday.en-GB11.name=Easter Monday
+holiday.en-GB11.date=20160328
+holiday.en-GB12.name=Early May Bank Holiday
+holiday.en-GB12.date=20160502
+holiday.en-GB13.name=Spring Bank Holiday
+holiday.en-GB13.date=20160530
+holiday.en-GB14.name=August Bank Holiday
+holiday.en-GB14.date=20160829
+holiday.en-GB15.name=Christmas Day
+holiday.en-GB15.date=20161225
+holiday.en-GB16.name=Boxing Day
+holiday.en-GB16.date=20161226
 """
 
-input_json_file = "gb_holidays_2017.json"
-output_file = "holidays.en=GB.rc"
 
-
-def main():
-    with open(input_json_file, 'r') as f:
-        with open(output_file, 'w') as output_f:
-            output_f.write(meta_data)
-            for x, line in list(enumerate(f, start=1)):
-                d = json.loads(line)
-                output_f.write(f"holiday.{d['locale']}{x}.name={d['description']}\n")
-                output_f.write(f"holiday.{d['locale']}{x}.date={d['date'].replace('-', '')}\n")
-
-
-if __name__ == '__main__':
-    main()
+@pytest.fixture
+def holiday_rc_file(tmpdir):
+    t_file = tmpdir.join('test_holiday_rc_file')
+    t_file.write(test_file)
+    return t_file
