@@ -15,7 +15,6 @@ def test_rc_language(holiday_rc_file):
 
 def test_rc_holiday_dict(holiday_rc_file):
     rc = RCParser(holiday_rc_file)
-    import pdb; pdb.set_trace()  # XXX BREAKPOINT
     assert "New Year's Day" in rc.holidays.keys()
     assert "Good Friday" in rc.holidays.keys()
 

@@ -16,7 +16,7 @@ class RCParser:
         self.holidays: dict = {}
         self._parse()
 
-    def _parse(self):
+    def _parse(self) -> None:
 
         main_data_matched = False
 
